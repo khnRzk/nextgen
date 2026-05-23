@@ -1,609 +1,780 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Next Gen Engineering & Consultancy</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Gen Engineering & Consultancy (Pvt) Ltd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --primary-dark: #12161A;       /* Deep rich slate charcoal */
+            --secondary-dark: #1A2026;     /* Light charcoal for depth */
+            --accent-gold: #C5A880;        /* Elegant, muted bronze-gold */
+            --accent-gold-hover: #E2C9A1;  /* Radiant gold highlight */
+            --text-light: #F4F5F6;         /* Soft off-white for body text */
+            --text-muted: #A0A5AB;         /* Readable muted grey */
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
 
-:root {
-  --bg: #0b1118;
-  --surface: #111820;
-  --panel: #141c26;
-  --border: rgba(92, 160, 220, 0.12);
-  --blue: #3a7bd5;
-  --blue2: #5a9be8;
-  --blue3: #7db8f5;
-  --sky: #b8d8f8;
-  --steel: #2c4a6e;
-  --white: #eef3fa;
-  --muted: #8ca0b8;
-  --dim: #4a6280;
-  --gold: #c9a84c;
-  --gold2: #e2c06a;
-  --glow: rgba(58, 123, 213, 0.15);
-  --glow2: rgba(58, 123, 213, 0.06);
-}
+        /* --- GLOBAL RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-html, body {
-  min-height: 100%;
-  font-family: 'Outfit', sans-serif;
-  background: var(--bg);
-  color: var(--white);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-/* ── ANIMATED BACKGROUND ── */
-.bg-scene {
-  position: fixed; inset: 0; z-index: 0; overflow: hidden;
-}
+        h1, h2, h3, .brand-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
 
-/* Deep grid */
-.bg-grid {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(58,123,213,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(58,123,213,0.07) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-smooth);
+        }
 
-/* Animated gradient orbs */
-.orb {
-  position: absolute; border-radius: 50%;
-  filter: blur(80px); pointer-events: none;
-}
-.orb-1 {
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(26,70,140,0.55) 0%, transparent 70%);
-  top: -150px; left: -100px;
-  animation: float1 18s ease-in-out infinite;
-}
-.orb-2 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(44,74,110,0.4) 0%, transparent 70%);
-  bottom: -100px; right: -80px;
-  animation: float2 22s ease-in-out infinite;
-}
-.orb-3 {
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
-  top: 40%; left: 50%; transform: translate(-50%,-50%);
-  animation: float3 14s ease-in-out infinite;
-}
-@keyframes float1 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(60px,80px)} 66%{transform:translate(-40px,40px)} }
-@keyframes float2 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(-80px,-60px)} 66%{transform:translate(40px,-30px)} }
-@keyframes float3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.3)} }
+        ul {
+            list-style: none;
+        }
 
-/* Architectural SVG line art */
-.arch-art {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 1; pointer-events: none;
-}
-.arch-art svg {
-  width: min(900px, 95vw); height: auto;
-}
+        /* --- STICKY NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(18, 22, 26, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 168, 128, 0.1);
+            transition: var(--transition-smooth);
+        }
 
-/* ── MAIN LAYOUT ── */
-.page {
-  position: relative; z-index: 10;
-  min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 40px 20px;
-}
+        header.scrolled {
+            padding: 10px 0;
+            background-color: var(--primary-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-/* ── CARD ── */
-.card {
-  width: 100%; max-width: 780px;
-  background: rgba(14, 22, 36, 0.75);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(92, 160, 220, 0.18);
-  box-shadow:
-    0 0 0 1px rgba(58,123,213,0.06) inset,
-    0 40px 120px rgba(0,0,0,0.6),
-    0 0 60px rgba(58,123,213,0.08);
-  overflow: hidden;
-  animation: cardIn 1s cubic-bezier(0.16,1,0.3,1) both;
-}
-@keyframes cardIn { from{opacity:0;transform:translateY(40px) scale(0.97)} to{opacity:1;transform:none} }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* Top accent bar */
-.card-bar {
-  height: 3px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    var(--blue) 20%,
-    var(--blue3) 50%,
-    var(--gold) 80%,
-    transparent 100%
-  );
-}
+        .brand-logo {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
 
-/* ── HEADER ── */
-.card-header {
-  padding: 52px 56px 44px;
-  position: relative;
-  border-bottom: 1px solid var(--border);
-  text-align: center;
-}
-.card-header::before {
-  content: '';
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(58,123,213,0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
+        .brand-logo span {
+            font-size: 0.75rem;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
 
-/* Logo emblem */
-.emblem {
-  width: 72px; height: 72px;
-  margin: 0 auto 24px;
-  position: relative;
-}
-.emblem-ring {
-  position: absolute; inset: 0;
-  border: 1px solid rgba(58,123,213,0.4);
-  border-radius: 50%;
-  animation: spin 20s linear infinite;
-}
-.emblem-ring-2 {
-  position: absolute; inset: 8px;
-  border: 1px solid rgba(201,168,76,0.25);
-  border-radius: 50%;
-  animation: spin 12s linear infinite reverse;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.emblem-core {
-  position: absolute; inset: 16px;
-  background: linear-gradient(135deg, var(--steel), var(--panel));
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  border: 1px solid rgba(58,123,213,0.3);
-}
-.emblem-core svg { width: 22px; height: 22px; color: var(--blue3); }
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+        }
 
-.company-name {
-  font-family: 'Cormorant', serif;
-  font-size: clamp(26px, 5vw, 38px);
-  font-weight: 500;
-  letter-spacing: 1px;
-  color: var(--white);
-  line-height: 1.15;
-  margin-bottom: 10px;
-}
-.company-name em {
-  font-style: italic;
-  color: var(--blue3);
-}
+        .nav-link {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+            color: var(--text-muted);
+            position: relative;
+            padding: 5px 0;
+        }
 
-.company-pvt {
-  font-size: 11px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--dim);
-  font-weight: 300; margin-bottom: 18px;
-}
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-gold);
+        }
 
-.disciplines {
-  display: flex; align-items: center; justify-content: center;
-  gap: 0; flex-wrap: wrap;
-}
-.disc-tag {
-  font-size: 9px; letter-spacing: 3.5px; text-transform: uppercase;
-  color: var(--muted); font-weight: 400;
-  padding: 6px 16px;
-  border: 1px solid var(--border);
-  transition: all 0.3s;
-}
-.disc-tag:hover { color: var(--blue3); border-color: rgba(90,155,232,0.3); background: rgba(58,123,213,0.06); }
-.disc-sep { width: 1px; height: 24px; background: var(--border); }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent-gold);
+            transition: var(--transition-smooth);
+        }
 
-/* ── BODY ── */
-.card-body {
-  padding: 0;
-}
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
 
-/* ── CONTACT GRID ── */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            cursor: pointer;
+        }
 
-.contact-item {
-  padding: 32px 40px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: flex-start; gap: 18px;
-  transition: background 0.35s;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.contact-item::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(58,123,213,0.06) 0%, transparent 60%);
-  opacity: 0; transition: opacity 0.35s;
-}
-.contact-item:hover::before { opacity: 1; }
-.contact-item:hover { background: rgba(58,123,213,0.04); }
-.contact-item:nth-child(2) { border-right: none; }
-.contact-item:nth-child(3) { border-right: none; border-bottom: none; }
-.contact-item:nth-child(4) { grid-column: span 2; border-right: none; border-bottom: none; justify-content: center; }
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(rgba(18, 22, 26, 0.8), rgba(18, 22, 26, 0.9)), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            padding: 0 20px;
+            text-align: center;
+        }
 
-.ci-icon {
-  width: 42px; height: 42px; min-width: 42px;
-  border: 1px solid rgba(58,123,213,0.25);
-  background: rgba(58,123,213,0.08);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.3s;
-}
-.contact-item:hover .ci-icon {
-  border-color: rgba(90,155,232,0.5);
-  background: rgba(58,123,213,0.15);
-  box-shadow: 0 0 20px rgba(58,123,213,0.2);
-}
-.ci-icon svg { width: 18px; height: 18px; color: var(--blue3); }
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease-out;
+        }
 
-.ci-label {
-  font-size: 8.5px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--dim); font-weight: 400; margin-bottom: 5px;
-}
-.ci-value {
-  font-size: 14px; color: var(--white); line-height: 1.5;
-  font-weight: 300; word-break: break-word;
-}
-.ci-value strong { font-weight: 500; color: var(--sky); }
+        .hero-tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
 
-/* Address full row */
-.contact-item.addr {
-  grid-column: span 2;
-  border-right: none;
-  justify-content: flex-start;
-}
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
 
-/* ── MAP TEASER ── */
-.map-strip {
-  border-top: 1px solid var(--border);
-  padding: 28px 40px;
-  display: flex; align-items: center; gap: 20px;
-  background: rgba(10,16,26,0.5);
-}
-.map-pin-wrap {
-  display: flex; align-items: center; gap: 10px;
-}
-.map-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--blue); position: relative;
-}
-.map-dot::after {
-  content: ''; position: absolute;
-  inset: -4px; border-radius: 50%;
-  border: 1px solid rgba(58,123,213,0.4);
-  animation: ping 2s ease-in-out infinite;
-}
-@keyframes ping { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.8);opacity:0} }
-.map-text {
-  font-size: 11.5px; color: var(--muted); font-weight: 300;
-}
-.map-text span { color: var(--blue3); }
-.map-link {
-  margin-left: auto; font-size: 9px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--dim);
-  text-decoration: none; display: flex; align-items: center; gap: 8px;
-  transition: color 0.3s;
-}
-.map-link:hover { color: var(--blue3); }
-.map-link svg { transition: transform 0.3s; }
-.map-link:hover svg { transform: translateX(4px); }
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+            font-weight: 300;
+        }
 
-/* ── FOOTER ── */
-.card-footer {
-  border-top: 1px solid var(--border);
-  padding: 22px 40px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(10,14,22,0.4);
-  flex-wrap: wrap; gap: 12px;
-}
-.footer-web {
-  font-size: 10px; letter-spacing: 2.5px; text-transform: lowercase;
-  color: var(--dim);
-}
-.footer-web a { color: var(--blue2); text-decoration: none; transition: color 0.3s; }
-.footer-web a:hover { color: var(--blue3); }
-.footer-copy {
-  font-size: 10px; color: var(--dim); font-weight: 300;
-}
+        .btn-gold {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 500;
+            background: transparent;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
 
-/* ── RICH GRAPHICS — Floating details around card ── */
-.float-tag {
-  position: fixed; font-size: 9px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--dim);
-  pointer-events: none; white-space: nowrap;
-}
-.float-tag.tl { top: 32px; left: 32px; }
-.float-tag.tr { top: 32px; right: 32px; text-align: right; }
-.float-tag.bl { bottom: 32px; left: 32px; }
-.float-tag.br { bottom: 32px; right: 32px; text-align: right; }
+        .btn-gold:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            box-shadow: 0 10px 20px rgba(197, 168, 128, 0.2);
+            transform: translateY(-2px);
+        }
 
-/* Corner brackets */
-.corner {
-  position: fixed; width: 28px; height: 28px;
-  pointer-events: none;
-  opacity: 0.25;
-}
-.corner.tl { top: 20px; left: 20px; border-top: 1px solid var(--blue); border-left: 1px solid var(--blue); }
-.corner.tr { top: 20px; right: 20px; border-top: 1px solid var(--blue); border-right: 1px solid var(--blue); }
-.corner.bl { bottom: 20px; left: 20px; border-bottom: 1px solid var(--blue); border-left: 1px solid var(--blue); }
-.corner.br { bottom: 20px; right: 20px; border-bottom: 1px solid var(--blue); border-right: 1px solid var(--blue); }
+        /* --- SECTION STRUCTURE --- */
+        section {
+            padding: 120px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-/* ── MOBILE ── */
-@media (max-width: 600px) {
-  .card-header { padding: 40px 28px 32px; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .contact-item { border-right: none; }
-  .contact-item:nth-child(4) { grid-column: span 1; }
-  .contact-item.addr { grid-column: span 1; }
-  .contact-item { padding: 24px 28px; }
-  .map-strip { padding: 20px 28px; flex-wrap: wrap; }
-  .card-footer { padding: 18px 28px; }
-  .float-tag, .corner { display: none; }
-  .disciplines { gap: 8px; flex-direction: column; }
-  .disc-sep { display: none; }
-}
-@media (max-width: 420px) {
-  .card-header { padding: 32px 20px 24px; }
-  .contact-item { padding: 20px; gap: 14px; }
-}
-</style>
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header span {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background-color: var(--accent-gold);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-box {
+            border-left: 2px solid var(--accent-gold);
+            padding-left: 20px;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--text-light);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .about-image {
+            position: relative;
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
+            border: 1px solid rgba(197, 168, 128, 0.2);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--accent-gold);
+            z-index: -1;
+            transition: var(--transition-smooth);
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--secondary-dark);
+            padding: 50px 40px;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: var(--transition-smooth);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* --- PORTFOLIO SECTION --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            height: 350px;
+            group: hover;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(18, 22, 26, 0.95), rgba(18, 22, 26, 0.4));
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            background-color: var(--secondary-dark);
+            padding: 15px;
+            border-radius: 50%;
+            border: 1px solid rgba(197, 168, 128, 0.1);
+        }
+
+        .contact-details h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            color: var(--accent-gold);
+        }
+
+        .contact-details p, .contact-details a {
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .contact-form {
+            background-color: var(--secondary-dark);
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 0;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-bottom-color: var(--accent-gold);
+        }
+
+        textarea.form-control {
+            height: 120px;
+            resize: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0E1114;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer p {
+            letter-spacing: 1px;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 992px) {
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .services-grid, .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-image {
+                height: 400px;
+                order: -1;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-dark);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: var(--transition-smooth);
+                gap: 40px;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .services-grid, .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<!-- BACKGROUND SCENE -->
-<div class="bg-scene">
-  <div class="bg-grid"></div>
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-
-  <!-- Rich architectural line art -->
-  <div class="arch-art">
-    <svg viewBox="0 0 900 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="fade" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="white" stop-opacity="1"/>
-          <stop offset="100%" stop-color="white" stop-opacity="0"/>
-        </radialGradient>
-        <mask id="fadeMask">
-          <rect width="900" height="600" fill="url(#fade)"/>
-        </mask>
-      </defs>
-
-      <g mask="url(#fadeMask)" opacity="0.12" stroke="#3a7bd5" stroke-width="0.7">
-
-        <!-- Main building silhouette -->
-        <rect x="200" y="140" width="500" height="360"/>
-        <!-- Roof triangle -->
-        <polygon points="175,140 450,30 725,140" stroke-width="0.8"/>
-        <!-- Roof ridge cap -->
-        <line x1="450" y1="30" x2="450" y2="140"/>
-        <!-- Chimney -->
-        <rect x="550" y="55" width="30" height="60"/>
-
-        <!-- Floor lines -->
-        <line x1="200" y1="260" x2="700" y2="260"/>
-        <line x1="200" y1="380" x2="700" y2="380"/>
-
-        <!-- Window rows — floor 1 -->
-        <rect x="230" y="160" width="65" height="45"/><line x1="262" y1="160" x2="262" y2="205"/>
-        <rect x="320" y="160" width="65" height="45"/><line x1="352" y1="160" x2="352" y2="205"/>
-        <rect x="515" y="160" width="65" height="45"/><line x1="547" y1="160" x2="547" y2="205"/>
-        <rect x="605" y="160" width="65" height="45"/><line x1="637" y1="160" x2="637" y2="205"/>
-        <!-- Arched centre window row1 -->
-        <rect x="415" y="155" width="70" height="55"/>
-        <path d="M415,175 Q450,150 485,175"/>
-
-        <!-- Window rows — floor 2 -->
-        <rect x="230" y="278" width="65" height="45"/><line x1="262" y1="278" x2="262" y2="323"/>
-        <rect x="320" y="278" width="65" height="45"/><line x1="352" y1="278" x2="352" y2="323"/>
-        <rect x="515" y="278" width="65" height="45"/><line x1="547" y1="278" x2="547" y2="323"/>
-        <rect x="605" y="278" width="65" height="45"/><line x1="637" y1="278" x2="637" y2="323"/>
-        <rect x="415" y="273" width="70" height="55"/>
-        <path d="M415,293 Q450,268 485,293"/>
-
-        <!-- Window rows — floor 3 -->
-        <rect x="230" y="398" width="65" height="45"/><line x1="262" y1="398" x2="262" y2="443"/>
-        <rect x="320" y="398" width="65" height="45"/><line x1="352" y1="398" x2="352" y2="443"/>
-        <rect x="515" y="398" width="65" height="45"/><line x1="547" y1="398" x2="547" y2="443"/>
-        <rect x="605" y="398" width="65" height="45"/><line x1="637" y1="398" x2="637" y2="443"/>
-
-        <!-- Grand entrance -->
-        <rect x="390" y="400" width="120" height="100"/>
-        <!-- Arched door top -->
-        <path d="M390,430 Q450,395 510,430"/>
-        <!-- Door columns -->
-        <line x1="410" y1="400" x2="410" y2="500"/>
-        <line x1="490" y1="400" x2="490" y2="500"/>
-        <!-- Steps -->
-        <line x1="380" y1="500" x2="520" y2="500"/>
-        <line x1="370" y1="510" x2="530" y2="510"/>
-        <line x1="360" y1="520" x2="540" y2="520"/>
-
-        <!-- Columns (facade) -->
-        <line x1="250" y1="140" x2="250" y2="500"/>
-        <line x1="350" y1="140" x2="350" y2="400"/>
-        <line x1="550" y1="140" x2="550" y2="400"/>
-        <line x1="650" y1="140" x2="650" y2="500"/>
-
-        <!-- Cornice detail -->
-        <line x1="195" y1="148" x2="705" y2="148"/>
-        <line x1="195" y1="156" x2="705" y2="156"/>
-
-        <!-- Ground line -->
-        <line x1="160" y1="520" x2="740" y2="520" stroke-dasharray="6,4"/>
-
-        <!-- Site boundary -->
-        <rect x="80" y="30" width="740" height="540" stroke-dasharray="8,8" opacity="0.5"/>
-
-        <!-- Measurement annotations -->
-        <line x1="80" y1="570" x2="820" y2="570"/>
-        <line x1="80" y1="560" x2="80" y2="580"/>
-        <line x1="820" y1="560" x2="820" y2="580"/>
-        <line x1="50" y1="30" x2="50" y2="570"/>
-        <line x1="40" y1="30" x2="60" y2="30"/>
-        <line x1="40" y1="570" x2="60" y2="570"/>
-
-        <!-- North arrow -->
-        <circle cx="820" cy="80" r="22" stroke-dasharray="4,4"/>
-        <polygon points="820,55 825,82 820,78 815,82" fill="#3a7bd5" stroke="none" opacity="0.4"/>
-        <line x1="820" y1="55" x2="820" y2="102"/>
-        <line x1="808" y1="80" x2="832" y2="80"/>
-
-        <!-- Scale bar -->
-        <rect x="650" y="560" width="120" height="6"/>
-        <rect x="650" y="560" width="60" height="6" fill="rgba(58,123,213,0.3)" stroke="none"/>
-
-        <!-- Small inset plan -->
-        <rect x="30" y="140" width="100" height="80" stroke-dasharray="3,3"/>
-        <rect x="40" y="148" width="30" height="22"/>
-        <rect x="78" y="148" width="42" height="22"/>
-        <rect x="40" y="178" width="80" height="32"/>
-
-        <!-- Title block -->
-        <rect x="650" y="440" width="160" height="80"/>
-        <line x1="650" y1="460" x2="810" y2="460"/>
-        <line x1="650" y1="478" x2="810" y2="478"/>
-        <line x1="730" y1="460" x2="730" y2="520"/>
-
-      </g>
-    </svg>
-  </div>
-</div>
-
-<!-- Floating peripheral text -->
-<div class="float-tag tl">Next Gen Engineering</div>
-<div class="float-tag tr">Kandy, Sri Lanka</div>
-<div class="float-tag bl">Architecture · Engineering · Interior</div>
-<div class="float-tag br">Est. 2014</div>
-
-<!-- Corner brackets -->
-<div class="corner tl"></div>
-<div class="corner tr"></div>
-<div class="corner bl"></div>
-<div class="corner br"></div>
-
-<!-- MAIN PAGE -->
-<div class="page">
-  <div class="card">
-
-    <!-- Accent bar -->
-    <div class="card-bar"></div>
-
-    <!-- HEADER -->
-    <div class="card-header">
-      <!-- Spinning emblem -->
-      <div class="emblem">
-        <div class="emblem-ring"></div>
-        <div class="emblem-ring-2"></div>
-        <div class="emblem-core">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
+    <header id="header">
+        <div class="nav-container">
+            <a href="#home" class="brand-logo">
+                NEXT GEN
+                <span>Engineering & Consultancy</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
-      </div>
+    </header>
 
-      <h1 class="company-name">
-        <em>Next Gen</em> Engineering<br>&amp; Consultancy
-      </h1>
-      <p class="company-pvt">(Private) Limited · Sri Lanka</p>
-
-      <div class="disciplines">
-        <span class="disc-tag">Architecture</span>
-        <div class="disc-sep"></div>
-        <span class="disc-tag">Engineering</span>
-        <div class="disc-sep"></div>
-        <span class="disc-tag">Interior</span>
-      </div>
-    </div>
-
-    <!-- CONTACT INFO -->
-    <div class="card-body">
-      <div class="contact-grid">
-
-        <!-- Phone -->
-        <a href="tel:+94771727867" class="contact-item">
-          <div class="ci-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a2 2 0 011.72-2.19h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 14.91a16 16 0 006 6l.9-.9a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 22.18v-5.26z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="ci-label">Mobile</div>
-            <div class="ci-value"><strong>+94 77 172 7867</strong></div>
-          </div>
-        </a>
-
-        <!-- Email -->
-        <a href="mailto:contactnextgenengineering@gmail.com" class="contact-item">
-          <div class="ci-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-          </div>
-          <div>
-            <div class="ci-label">Email</div>
-            <div class="ci-value" style="font-size:12.5px;"><strong>contactnextgenengineering@gmail.com</strong></div>
-          </div>
-        </a>
-
-        <!-- Address -->
-        <div class="contact-item addr">
-          <div class="ci-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-          </div>
-          <div>
-            <div class="ci-label">Office Address</div>
-            <div class="ci-value"><strong>104/D, Telumbugahawatte, Akurana, Kandy</strong><br><span style="color:var(--muted);font-size:12px;">Sri Lanka</span></div>
-          </div>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="hero-tagline">Established 2014</p>
+            <h1>Designing Spaces. Engineering Innovations.</h1>
+            <p>We blend timeless architectural artistry with structural master planning to deliver high-performance, elegant spaces across Sri Lanka.</p>
+            <a href="#contact" class="btn-gold">Begin Your Project</a>
         </div>
+    </section>
 
-      </div>
-
-      <!-- Map strip -->
-      <div class="map-strip">
-        <div class="map-pin-wrap">
-          <div class="map-dot"></div>
-          <span class="map-text">Located in <span>Akurana, Kandy</span> — Central Province, Sri Lanka</span>
+    <section id="about">
+        <div class="section-header">
+            <span>Who We Are</span>
+            <h2>Crafting Premium Spaces</h2>
         </div>
-        <a href="https://maps.google.com/?q=Akurana,Kandy,Sri+Lanka" target="_blank" class="map-link">
-          View Map
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Next Gen Engineering & Consultancy</h3>
+                <p>Based in the cultural capital of Kandy, we operate as an integrated interdisciplinary practice. For over a decade, we have spearheaded residential, commercial, and interior transformations with a core focus on meticulous quality control and sustainable technical execution.</p>
+                <p>Whether bringing custom blueprints to life or engineering complex structural solutions, our tailored methodology guarantees project optimization from initial concept sketches straight through to handover.</p>
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Completed Spaces</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image"></div>
+        </div>
+    </section>
 
-    <!-- FOOTER -->
-    <div class="card-footer">
-      <div class="footer-web">
-        <a href="http://nextgenengineeringg.com/" target="_blank">nextgenengineeringg.com</a>
-      </div>
-      <div class="footer-copy">© 2024 Next Gen Engineering & Consultancy (Pvt) Ltd</div>
-    </div>
+    <section id="services">
+        <div class="section-header">
+            <span>Our Expertise</span>
+            <h2>Core Capabilities</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+                <h3>Architecture</h3>
+                <p>Bespoke conceptual architectural designs, spatial planning, and high-end 3D visualizations tailored meticulously to local environments and modern aesthetic expectations.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+                <h3>Engineering</h3>
+                <p>Comprehensive structural design analysis, MEP plant engineering, rigorous on-site supervision, and advanced technical consultations ensuring strict project compliance.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-couch"></i></div>
+                <h3>Interior Design</h3>
+                <p>Sophisticated commercial and residential fit-outs, custom furniture integration, detailed lighting calculations, and pristine color-palette staging.</p>
+            </div>
+        </div>
+    </section>
 
-  </div>
-</div>
+    <section id="portfolio">
+        <div class="section-header">
+            <span>Our Work</span>
+            <h2>Featured Landmarks</h2>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Luxury Villa">
+                <div class="portfolio-overlay">
+                    <span>Architecture</span>
+                    <h3>The Luxury Residence</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Commercial Corporate Office">
+                <div class="portfolio-overlay">
+                    <span>Engineering</span>
+                    <h3>NextGen Corporate Plaza</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80" alt="Minimalist Interior Space">
+                <div class="portfolio-overlay">
+                    <span>Interior Design</span>
+                    <h3>Minimalist Atrium Lounge</h3>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="contact">
+        <div class="section-header">
+            <span>Connect With Us</span>
+            <h2>Let's Shape The Future</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p style="color: var(--text-muted); margin-bottom: 40px; font-weight:300;">Reach out to schedule an absolute obligation-free discovery meeting at our corporate chambers or arrange an initial project scoping call.</p>
+                
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="contact-details">
+                        <h4>Office Chambers</h4>
+                        <p>104/D, Telumbugahawatte, Akurana,<br>Kandy, Central Province, Sri Lanka</p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="contact-details">
+                        <h4>Direct Line</h4>
+                        <p><a href="tel:+94771727867">+94 77 172 7867</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="contact-details">
+                        <h4>Official Correspondence</h4>
+                        <p><a href="mailto:contactnextgenengineering@gmail.com">contactnextgenengineering@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="projectForm" action="#" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="YOUR FULL NAME" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="YOUR EMAIL ADDRESS" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="PROJECT TYPE (E.G., RESIDENTIAL ARCHITECTURE)" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="BRIEF PROJECT REQUIREMENT DESCRIPTION" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-gold" style="width: 100%;">Submit Consultation Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Next Gen Engineering & Consultancy (Pvt) Ltd. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // --- STICKY NAV BACKGROUND SHIFT ---
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- MOBILE NAV TOGGLE ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if(navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu on nav item click (mobile standard layout behavior)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+            });
+        });
+
+        // --- SCROLL SPY EFFECT TO HIGHLIGHT ACTIVE NAV LINK ---
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
